@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  width: 220px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid blue;
+}
+
+.Submit {
+  background-color: rgb(13, 13, 237);
+  cursor: pointer;
+  color: white;
+}
+
+.Submit:hover {
+  background-color: rgb(143, 224, 231);
+}
+
+.message {
+  color: red;
+}

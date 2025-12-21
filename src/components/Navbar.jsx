@@ -1,0 +1,71 @@
+import React,{useState} from "react";
+import "./Navbar.css";
+import { Menu, X } from "lucide-react";
+import { FaDiscord } from "react-icons/fa";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Container = styled.div`
+  width: 100vw;
+  height: 10vh;
+  background-color: rgb(255, 170, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+const ToggleButton = styled.button`
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+const NavText = styled(Link)`
+  margin: 0 18px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  text-decoration:none;
+  transition: color 0.3s ease;
+  &:hover {
+    color: #fff;
+  }
+`;
+const DiscordJoin=styled.button`
+ width:10vw;
+ height:70%;
+ padding:10px;
+ border-radius:10px;
+ text-align:center;
+ margin-right:10px;
+ background-color:#FFF3E0;
+ overflow:hidden;
+ &:hover{
+  background-color:#EADBC8;
+ }
+`
+const Navbar = ({sideBarVisibility,setsideBarVisibility}) => {
+
+
+  return <Container>
+      <ToggleButton onClick={() => setsideBarVisibility(!sideBarVisibility)}>
+        {sideBarVisibility ? <X size={28} /> : <Menu size={28} />}
+      </ToggleButton>
+      <h2>Our Mess</h2>
+      <NavText to="/">Home</NavText>
+      <NavText to="/Login">Login</NavText>
+      <DiscordJoin onClick={()=>{
+        return(
+          window.open("https://discord.gg/TzhSUyfbyW", "_blank")
+        )
+      }}> 
+        <FaDiscord size={24} color="rgba(8, 32, 216, 1)">Join</FaDiscord>
+      </DiscordJoin>
+    </Container>
+};
+
+export default Navbar;
+
