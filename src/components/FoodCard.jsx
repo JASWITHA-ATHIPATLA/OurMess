@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useId} from "react";
 import styled from "styled-components";
 import Axios from "axios";
 import Card from "./Card.jsx";
@@ -14,7 +14,7 @@ function FoodCard({ price }) {
           );
           const data = await response.json();
           const meals = data.meals;
-          // console.log(meals);
+          // console.log(meals);        
           setFoodDataArr((prev) => [...prev, ...meals]);
         }
       } catch (error) {
@@ -26,7 +26,7 @@ function FoodCard({ price }) {
 
   return (
     <>
-      {foodDataArr.map((meal, index) => (
+      {foodDataArr.map((meal,index) => (
         <Card
           key={index}
           price={price || "₹199"}
