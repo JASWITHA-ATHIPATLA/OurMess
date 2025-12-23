@@ -1,5 +1,5 @@
-import {useState,useEffect} from 'react'
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const TodoForm = styled.form`
   width: 60%;
@@ -10,7 +10,6 @@ const TodoForm = styled.form`
     margin: 1rem auto;
   }
 `;
-
 const FormRow = styled.div`
   width: 100%;
   display: flex;
@@ -79,50 +78,60 @@ const BtnDelete = styled.button`
   }
 `;
 
-function  MakeTodoEvents(){
- const [newItem,setNewItem]=useState("");
- const [todos,setTodos]=useState([]);
-function handleSubmit(e){
-  e.preventDefault();
-  if(newItem==="")return ;
-  setTodos((todos)=>{
-   return [...todos,{id:crypto.randomUUID(),title:newItem}]
-  })
-  setNewItem("");
-}
-function DeleteTodo(id){
-   setTodos(prev=>{
-    return prev.filter(todo=>todo.id !==id)
-   })
-}
+function MakeTodoEvents() {
+  const [newItem, setNewItem] = useState("");
+  const [todos, setTodos] = useState([]);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (newItem === "") return;
+    setTodos((todos) => {
+      return [...todos, { id: crypto.randomUUID(), title: newItem }];
+    });
+    setNewItem("");
+  }
+  function DeleteTodo(id) {
+    setTodos((prev) => {
+      return prev.filter((todo) => todo.id !== id);
+    });
+  }
   return (
     <TodoForm onSubmit={handleSubmit}>
-     <FormRow>
-      <label htmlFor='item' style={{fontSize:"60px"}}>Make Note 🗒</label>
-      <Input
-        type="text"
-        value={newItem}
-        onChange={(e)=>setNewItem(e.target.value)}
-        placeholder='add items'
-        id='item'
-      />
-      <Add type="submit" disabled={newItem.trim()===''}>ADD</Add>
-     </FormRow>
+      <FormRow>
+        <label htmlFor="item" style={{ fontSize: "60px" }}>
+          Make Note 🗒
+        </label>
+        <Input
+          type="text"
+          value={newItem}
+          onChange={(e) => setNewItem(e.target.value)}
+          placeholder="add items"
+          id="item"
+        />
+        <Add type="submit" disabled={newItem.trim() === ""}>
+          ADD
+        </Add>
+      </FormRow>
 
-     <h1 style={{ color:"blue"}}><Title>Todo List</Title></h1>
-     <Unorderedlist>
-      {todos.length===0 ? null : todos.map(todo=>(
-        <List key={todo.id}>
-         <label>
-           <Input type="checkbox" />
-           {todo.title}
-         </label>
-         <BtnDelete onClick={()=>DeleteTodo(todo.id)}>Delete</BtnDelete>
-        </List>
-      ))}
-     </Unorderedlist>
+      <h1 style={{ color: "blue" }}>
+        <Title>Todo List</Title>
+      </h1>
+      <Unorderedlist>
+        {todos.length === 0
+          ? null
+          : todos.map((todo) => (
+              <List key={todo.id}>
+                <label>
+                  <Input type="checkbox" />
+                  {todo.title}
+                </label>
+                <BtnDelete onClick={() => DeleteTodo(todo.id)}>
+                  Delete
+                </BtnDelete>
+              </List>
+            ))}
+      </Unorderedlist>
     </TodoForm>
-  )
+  );
 }
 
 export default MakeTodoEvents;
