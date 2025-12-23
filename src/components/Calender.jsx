@@ -4,18 +4,19 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
 import Background from "../assets/Image1.jpg";
+import MakeTodoEvents from "./MakeTodoEvents";
+
 const Container = styled.div`
   width: auto;
   height: auto;
 `;
 const CalendarWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   min-height: 100vh;
   background-color: black;
   padding: 4px;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-image: url(${Background});
   background-repeat: repeat;
   .react-calendar {
@@ -27,7 +28,7 @@ const CalendarWrapper = styled.div`
   /* Phone screens */
   @media (max-width: 768px) {
     padding: 4px;
-
+   width:40vh;
     .react-calendar {
       font-size: 0.85rem;
     }
@@ -57,7 +58,9 @@ function OutlookCalendar() {
           prev2Label={null}
           next2Label={null}
         />
+              <MakeTodoEvents/>
       </CalendarWrapper>
+
     </Container>
   );
 }
