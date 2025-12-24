@@ -7,21 +7,24 @@ import Calender from "./Calender.jsx";
 import MessMenu from "./MessMenu.jsx"
 
 const Container = styled.div`
-  width: 30vw;
+  width: 20vw;
   height: 100%;
   background-color: white;
+  @media(max-width:768px){
+   width:30vw;
+ }
 `;
 
 const SideWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: cream;
-  gap:3vh;
+  gap:2vh;
   flex-direction:column;
 `;
 
 const SideButtons = styled(Link)`
- width: 90%;
+ width: 80%;
  height:5vh;
  margin-top:2vh;
  padding:1vh;
@@ -31,6 +34,10 @@ const SideButtons = styled(Link)`
  border-radius: 12px;
  color: black;
  transition: background-color 0.3s ease;
+ @media(max-width:768px){
+
+ font-size:5vw;
+ }
  &:hover {
   background-color: rgb(255, 170, 0);
   color:blue;
