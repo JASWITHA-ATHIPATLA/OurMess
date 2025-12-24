@@ -20,7 +20,8 @@ const CalendarWrapper = styled.div`
   background-image: url(${Background});
   background-repeat: repeat;
   .react-calendar {
-    width: 100%;
+    width: 70%;
+    height:50%;
     max-width: 380px; /* perfect for phones */
     border: none;
     font-size: 0.9rem;
@@ -28,7 +29,8 @@ const CalendarWrapper = styled.div`
   /* Phone screens */
   @media (max-width: 768px) {
     padding: 4px;
-   width:40vh;
+    width: 100vw;
+    margin-left:5px;
     .react-calendar {
       font-size: 0.85rem;
     }

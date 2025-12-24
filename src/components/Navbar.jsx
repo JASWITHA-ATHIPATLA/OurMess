@@ -55,7 +55,7 @@ const Navbar = ({sideBarVisibility,setsideBarVisibility}) => {
         {sideBarVisibility ? <X size={28} /> : <Menu size={28} />}
       </ToggleButton>
       <h2>Our Mess</h2>
-      <NavText to="/">Home</NavText>
+      <NavText to="/FoodRating">Home</NavText>
       <NavText to="/Login">Login</NavText>
       <DiscordJoin onClick={()=>{
         return(

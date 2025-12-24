@@ -31,7 +31,9 @@ const Input = styled.input`
   max-width: 400px;
   height: 35px;
   background-color: lightblue;
-
+    @media (max-width: 768px) {
+    width:50px;
+  }
   &:hover {
     background-color: lightpink;
   }
@@ -45,6 +47,9 @@ const Add = styled.button`
   color: white;
   border: none;
   cursor: pointer;
+  @media (max-width: 768px) {
+    width:50px;
+  }
 
   &:hover {
     background-color: green;
@@ -97,7 +102,7 @@ function MakeTodoEvents() {
   return (
     <TodoForm onSubmit={handleSubmit}>
       <FormRow>
-        <label htmlFor="item" style={{ fontSize: "60px" }}>
+        <label htmlFor="item" style={{ fontSize: "30px" }}>
           Make Note 🗒
         </label>
         <Input

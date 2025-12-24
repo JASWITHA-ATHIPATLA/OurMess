@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import FoodRating from "./components/FoodRating.jsx";
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
 import ButtonSide from "./components/ButtonSide.jsx";
@@ -58,6 +59,7 @@ function App() {
           <Route path="Calender" element={<Calender />} />
           <Route path="MessMenu" element={<MessMenu />} />
           <Route path="OredersTake" element={ <OredersTake/>} />
+          <Route path="FoodRating" element={<FoodRating/>} />
         </Route>
       </Routes>
     </>

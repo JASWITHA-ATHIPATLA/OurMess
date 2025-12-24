@@ -1,0 +1,19 @@
+.star {
+  color: gray;
+  cursor: pointer;
+}
+
+.star.red {
+  color: red;
+}
+
+.star.orange {
+  color: orange;
+}
+
+.star.yellow {
+  color: gold;
+}
+.star.green{
+ color:green;
+}
