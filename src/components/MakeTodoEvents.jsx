@@ -11,7 +11,7 @@ const TodoForm = styled.form`
   }
 `;
 const FormRow = styled.div`
-  width: 100%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;

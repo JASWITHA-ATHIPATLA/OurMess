@@ -13,7 +13,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   @media (max-width: 768px) {
-    width: 100%;
+    width: 100vw;
   }
 `;
 const ToggleButton = styled.button`
@@ -42,7 +42,9 @@ const DiscordJoin=styled.button`
  height:70%;
  padding:10px;
  border-radius:10px;
- text-align:center;
+ display:flex;
+ justify-content:center;
+ align-items:center;
  margin-right:10px;
  background-color:#FFF3E0;
  overflow:hidden;
@@ -65,7 +67,7 @@ const Navbar = ({sideBarVisibility,setsideBarVisibility}) => {
           window.open("https://discord.gg/TzhSUyfbyW", "_blank")
         )
       }}> 
-        <FaDiscord size={24} color="rgba(8, 32, 216, 1)">Join</FaDiscord>
+        <FaDiscord size={34} color="rgba(8, 32, 216, 1)">Join</FaDiscord>
       </DiscordJoin>
     </Container>
 };

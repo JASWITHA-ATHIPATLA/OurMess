@@ -10,6 +10,9 @@ const Container = styled.div`
   background-color: black;
   color: orange;
   padding: 10px;
+  @media(max-width:768px){
+  width:94%;
+  }
 `;
 
 const Title = styled.h2`
