@@ -14,6 +14,7 @@ const MainContent = styled.div`
   gap: 1vw;
   @media(max-width:768px){
   width:70vw;
+  flex-direction: column;
 }
 `;
 const Container = styled.div`
