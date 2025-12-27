@@ -53,7 +53,7 @@ function Sidebar() {
         <SideButtons to="/MessMenu">Mess Menu</SideButtons>
         <SideButtons to="/Calender">Calender</SideButtons>
         <SideButtons to="/">Location</SideButtons>
-        <SideButtons to="/">Notices</SideButtons>
+        <SideButtons to="/FoodRating">MessRatings</SideButtons>
         <SideButtons to="/">Discussions</SideButtons>
       </SideWrapper>
     </Container>
