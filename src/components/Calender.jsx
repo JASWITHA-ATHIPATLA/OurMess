@@ -28,11 +28,13 @@ const CalendarWrapper = styled.div`
   }
   /* Phone screens */
   @media (max-width: 768px) {
-    padding: 4px;
-    width: 100vw;
-    margin-left:5px;
+    width:95%;
+    flex-direction: column;
+    align-items: center;
+
     .react-calendar {
-      font-size: 0.85rem;
+      width: 90%;
+      font-size: 1rem;
     }
   }
 `;
