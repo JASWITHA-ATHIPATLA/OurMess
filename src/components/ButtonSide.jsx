@@ -52,9 +52,9 @@ function Sidebar() {
         <SideButtons to="/Home">Order</SideButtons>
         <SideButtons to="/MessMenu">Mess Menu</SideButtons>
         <SideButtons to="/Calender">Calender</SideButtons>
-        <SideButtons to="/">Location</SideButtons>
+        <SideButtons to="/Location">Location</SideButtons>
         <SideButtons to="/FoodRating">MessRatings</SideButtons>
-        <SideButtons to="/">Discussions</SideButtons>
+        <SideButtons to="/Discussions">Discussions</SideButtons>
       </SideWrapper>
     </Container>
   );
