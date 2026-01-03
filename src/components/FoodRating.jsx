@@ -121,17 +121,18 @@ function FoodRating() {
 
   return (
     <MainContent>
+    <h1></h1>
       {FoodData.map((food) => {
         const foodRatingData =
           ratings[food.id] ?? { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
         const dominantRating = getDominantRating(foodRatingData);
-
+        const date=new Date();
         return (
           <Container key={food.id}>
             <h2>{food.item}</h2>
             <Wrap src={food.img} alt={food.item} />
-
+            <h3>{date.toLocaleDateString()}</h3>
             <OrderFood>
               {[1, 2, 3, 4, 5].map((star) => (
                 <FaStar
