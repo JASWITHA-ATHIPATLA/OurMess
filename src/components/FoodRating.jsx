@@ -21,7 +21,7 @@ const MainContent = styled.div`
 `;
 
 const Container = styled.div`
-  width: 20em;
+  width: 17em;
   height: 22em;
   margin-top: 3%;
   border: 2px solid #333;
