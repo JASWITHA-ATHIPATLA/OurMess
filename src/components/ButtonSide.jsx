@@ -8,10 +8,11 @@ import MessMenu from "./MessMenu.jsx"
 
 const Container = styled.div`
   width: 20vw;
-  height: 100%;
+  height: 100vh;
   background-color: white;
   @media(max-width:768px){
    width:30vw;
+   height:100%;
  }
 `;
 
@@ -27,15 +28,18 @@ const SideButtons = styled(Link)`
  width: 80%;
  height:5vh;
  margin-top:2vh;
+ margin-left:5vh;
  padding:1vh;
  text-decoration: none;
  text-align:center;
  font-size: 1.5vw;
  border-radius: 12px;
- color: black;
+ color:black;
+ background-color:#f0f0f0;
  transition: background-color 0.3s ease;
  @media(max-width:768px){
-
+ margin-left:0px;
+  background-color:white;
  font-size:5vw;
  }
  &:hover {
@@ -55,6 +59,7 @@ function Sidebar() {
         <SideButtons to="/Location">Location</SideButtons>
         <SideButtons to="/FoodRating">MessRatings</SideButtons>
         <SideButtons to="/Discussions">Discussions</SideButtons>
+        <SideButtons to="/AINutritionAnalyst">AI Nutrition Analyst</SideButtons>
       </SideWrapper>
     </Container>
   );
