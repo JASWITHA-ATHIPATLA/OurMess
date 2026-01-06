@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import OredersTake from './OredersTake';
 import styled from "styled-components";
-
 import { Link,useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
