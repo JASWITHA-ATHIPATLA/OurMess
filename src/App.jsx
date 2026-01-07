@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 import FoodRating from "./components/FoodRating.jsx";
 import styled from "styled-components";
@@ -11,6 +11,10 @@ import MessMenu from "./components/MessMenu.jsx";
 import MainContent from "./components/MainContent.jsx";
 import Login from "./components/Login.jsx";
 import OredersTake from "./components/OredersTake.jsx";
+import Location from "./components/Location.jsx";
+import Discussions from "./components/Discussions.jsx";
+import ThemeContext from "./components/Navbar.jsx";
+import AINutritionAnalyst from "./components/AINutritionAnalyst.jsx";
 
 const MainCotainer = styled.div`
   min-height: 100vh;
@@ -49,17 +53,29 @@ function Layout({ sideBarVisibility, setsideBarVisibility }) {
 }
 function App() {
   const [sideBarVisibility, setsideBarVisibility] = useState(false);
+  const DarkTheme = useContext(ThemeContext);
   return (
     <>
       <Routes>
-        <Route path="Login" element={<Login/>}/>
-        <Route path="/" element={<Layout sideBarVisibility={sideBarVisibility} setsideBarVisibility={setsideBarVisibility}/>}>
-          <Route index element={<h1>Welcome to OurMess!</h1>}/>
+        <Route path="Login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <Layout
+              sideBarVisibility={sideBarVisibility}
+              setsideBarVisibility={setsideBarVisibility}
+            />
+          }
+        >
+          <Route index element={<h1>Welcome to OurMess!</h1>} />
           <Route path="Home" element={<Home />} />
           <Route path="Calender" element={<Calender />} />
           <Route path="MessMenu" element={<MessMenu />} />
-          <Route path="OredersTake" element={ <OredersTake/>} />
-          <Route path="FoodRating" element={<FoodRating/>} />
+          <Route path="OredersTake" element={<OredersTake />} />
+          <Route path="FoodRating" element={<FoodRating />} />
+          <Route path="Location" element={<Location />} />
+          <Route path="Discussions" element={<Discussions />} />
+          <Route path="AINutritionAnalyst" element={<AINutritionAnalyst />} />
         </Route>
       </Routes>
     </>
