@@ -5,7 +5,7 @@ import { FaDiscord } from "react-icons/fa";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const ThemeContext = createContext();
+export const Themecontext = createContext();
 const Container = styled.div`
   width: 100%;
   height: 10vh;
@@ -63,7 +63,7 @@ const Navbar = ({ sideBarVisibility, setsideBarVisibility }) => {
 
   return (
     <Container>
-      <ThemeContext.Provider value={darkTheme}>
+      <Themecontext.Provider value={{ darkTheme, toogleTheme }}>
       <ToggleButton onClick={() => setsideBarVisibility(!sideBarVisibility)}>
         {sideBarVisibility ? <X size={28} /> : <Menu size={28} />}
       </ToggleButton>
@@ -84,7 +84,7 @@ const Navbar = ({ sideBarVisibility, setsideBarVisibility }) => {
         >
           {darkTheme ? <Sun size={19} /> : <Moon size={19} />}
         </button>
-      </ThemeContext.Provider>
+      </Themecontext.Provider>
 
       <DiscordJoin
         onClick={() => {

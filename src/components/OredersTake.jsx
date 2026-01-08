@@ -1,7 +1,14 @@
-import React from "react";
+import React,{useContext,useState} from "react";
 import styled from "styled-components";
 import BFB_Menu from "../assets/BFB_Menu.jpeg";
-
+import ThemeContext from "./ThemeContex";
+const Container=styled.div`
+  width:100%,
+  height:100vh,
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"center"
+}`;
 const PlaceOrder = styled.div`
   margin: 2rem auto;
   padding: 2rem;
@@ -42,8 +49,10 @@ const Contact = styled.h3`
 `;
 
 function OredersTake() {
-  return (
-    <PlaceOrder>
+  const Theme=useContext(ThemeContext);
+  return (<Container onClick={() => Theme.toogleTheme()}  style={{backgroundColor:Theme.darkTheme?"#333" : "#f9f9f9"}}>
+    <PlaceOrder >
+      {console.log(Theme.darkTheme)}
       <Header>Best Food at Lower Cost -OurMess</Header>
       <Card src={BFB_Menu} alt="Breakfast Menu" />
       <Contact>
@@ -52,6 +61,7 @@ function OredersTake() {
         📞 <strong>8523814248</strong>
       </Contact>
     </PlaceOrder>
+  </Container>
   );
 }
 
