@@ -62,7 +62,7 @@ function OutlookCalendar() {
           prev2Label={null}
           next2Label={null}
         />
-              <MakeTodoEvents/>
+        <MakeTodoEvents/>
       </CalendarWrapper>
 
     </Container>
