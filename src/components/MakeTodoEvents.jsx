@@ -31,8 +31,8 @@ const Input = styled.input`
   max-width: 400px;
   height: 35px;
   background-color: lightblue;
-    @media (max-width: 768px) {
-    width:50px;
+  @media (max-width: 768px) {
+    width: 50px;
   }
   &:hover {
     background-color: lightpink;
@@ -48,7 +48,7 @@ const Add = styled.button`
   border: none;
   cursor: pointer;
   @media (max-width: 768px) {
-    width:50px;
+    width: 50px;
   }
 
   &:hover {
