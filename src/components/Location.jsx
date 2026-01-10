@@ -70,7 +70,7 @@ const blocks = {
   AB2: "VIT-AP University AB2 Block",
   CB: "VIT-AP University CB Block",
   LH: "VIT-AP University LH Block",
-  MH: "VIT-AP University MH Block"
+  MH: "VIT-AP University MH Block",
 };
 
 const MAIN_GATE = "VIT-AP University Main Gate";
@@ -79,7 +79,7 @@ const VITAP_BOUNDS = {
   minLat: 16.4405,
   maxLat: 16.4455,
   minLng: 80.6205,
-  maxLng: 80.6255
+  maxLng: 80.6255,
 };
 
 /* ---------- COMPONENT ---------- */
@@ -107,7 +107,7 @@ const LocationComponent = () => {
         (pos) =>
           resolve({
             lat: pos.coords.latitude,
-            lng: pos.coords.longitude
+            lng: pos.coords.longitude,
           }),
         () => reject("Location permission denied")
       );
@@ -135,7 +135,9 @@ const LocationComponent = () => {
       }
 
       setMapUrl(
-        `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
+        `https://www.google.com/maps?q=${encodeURIComponent(
+          query
+        )}&output=embed`
       );
     } catch (e) {
       alert(e);
