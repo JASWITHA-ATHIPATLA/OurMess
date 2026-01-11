@@ -10,8 +10,8 @@ const Container = styled.div`
   background-color: black;
   color: orange;
   padding: 10px;
-  @media(max-width:768px){
-  width:94%;
+  @media (max-width: 768px) {
+    width: 94%;
   }
 `;
 
@@ -106,7 +106,7 @@ const MessMenu = () => {
     const dateObj = new Date(year, month, i + 1);
     return {
       date: i + 1,
-      day: dateObj.toLocaleDateString("en-US", { weekday: "long" })
+      day: dateObj.toLocaleDateString("en-US", { weekday: "long" }),
     };
   });
 
@@ -146,17 +146,29 @@ const MessMenu = () => {
       <MobileContainer>
         {dates.map(({ date, day }, index) => (
           <Card key={date}>
-            <CardHeader onClick={() => setOpenIndex(openIndex === index ? null : index)}>
-              <span>{day} - {date}</span>
+            <CardHeader
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            >
+              <span>
+                {day} - {date}
+              </span>
               <span>{openIndex === index ? "−" : "+"}</span>
             </CardHeader>
 
             {openIndex === index && (
               <CardBody>
-                <p><Label>Breakfast:</Label> {weeklyMenu[day]?.breakfast}</p>
-                <p><Label>Lunch:</Label> {weeklyMenu[day]?.lunch}</p>
-                <p><Label>Snacks:</Label> {weeklyMenu[day]?.snacks}</p>
-                <p><Label>Dinner:</Label> {weeklyMenu[day]?.dinner}</p>
+                <p>
+                  <Label>Breakfast:</Label> {weeklyMenu[day]?.breakfast}
+                </p>
+                <p>
+                  <Label>Lunch:</Label> {weeklyMenu[day]?.lunch}
+                </p>
+                <p>
+                  <Label>Snacks:</Label> {weeklyMenu[day]?.snacks}
+                </p>
+                <p>
+                  <Label>Dinner:</Label> {weeklyMenu[day]?.dinner}
+                </p>
               </CardBody>
             )}
           </Card>
