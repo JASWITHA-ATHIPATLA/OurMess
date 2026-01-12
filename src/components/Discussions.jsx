@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 /* ---------- STYLED COMPONENTS ---------- */
-
 const ChatWrapper = styled.div`
   width: 100%;
   max-width: 500px;
