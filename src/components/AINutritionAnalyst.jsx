@@ -7,7 +7,6 @@ const GEMINI_URL ="https://generativelanguage.googleapis.com/v1beta/models/gemin
  // 🔴 PUT YOUR API KEY HERE
 
 /* ---------------- STYLED COMPONENTS ---------------- */
-
 const Page = styled.div`
   min-height: 100vh;
   background: #f4f6f8;
