@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { weeklyMenu } from "./MenuData.jsx";
+import { februaryMenu} from "./MenuData.jsx";
 
 /* ---------------- GEMINI API KEY ---------------- */
 const GEMINI_URL ="https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
