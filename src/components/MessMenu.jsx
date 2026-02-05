@@ -1,179 +1,104 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { weeklyMenu } from "./MenuData";
+import { februaryMenu } from "./MenuData.jsx";
 
 /* ---------- STYLES ---------- */
 
 const Container = styled.div`
-  width: 100%;
-  min-height: 100vh;
+  width: 77vw;
+  min-height: 90vh;
   background-color: black;
   color: orange;
-  padding: 10px;
-  @media (max-width: 768px) {
-    width: 94%;
-  }
+  padding: 16px;
+
+    @media (max-width: 900px) {
+    width:60vw;
+   }
 `;
 
 const Title = styled.h2`
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   font-size: 18px;
 `;
 
-/* ---------- DESKTOP TABLE ---------- */
+/* ---------- GRID ---------- */
 
-const TableWrapper = styled.div`
-  overflow-x: auto;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const Table = styled.table`
+const CardsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
   width: 90%;
   margin: auto;
-  border-collapse: collapse;
-  min-width: 800px;
-  font-size: 12px;
-`;
 
-const Th = styled.th`
-  border: 1px solid orange;
-  padding: 6px;
-  background-color: orange;
-  color: black;
-`;
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-const Td = styled.td`
-  border: 1px solid orange;
-  padding: 6px;
-  vertical-align: top;
-`;
-
-const Tr = styled.tr`
-  &:nth-child(even) {
-    background-color: #111;
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-/* ---------- MOBILE CARDS ---------- */
-
-const MobileContainer = styled.div`
-  display: none;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-`;
-
-const Card = styled.div`
-  border: 1px solid orange;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
+const MealCard = styled.div`
+  border: 2px solid orange;
+  border-radius: 12px;
+  padding: 14px;
   background-color: #111;
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.4);
 `;
 
-const CardHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  font-weight: bold;
-`;
-
-const CardBody = styled.div`
-  margin-top: 8px;
-  font-size: 13px;
-  line-height: 1.4;
-`;
-
-const Label = styled.span`
-  font-weight: bold;
+const MealTitle = styled.h4`
+  margin-bottom: 8px;
+  text-align: center;
+  color: #ffd27d;
 `;
 
 /* ---------- COMPONENT ---------- */
 
 const MessMenu = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const today = new Date();
+  const month = today.toLocaleString("en-US", { month: "short" });
+  const date = today.getDate();
+  const todayKey = `${month} ${date}`;
 
-  const daysInOctober = 31;
-  const year = 2025;
-  const month = 9;
+  const todayMenu = februaryMenu[todayKey];
 
-  const dates = Array.from({ length: daysInOctober }, (_, i) => {
-    const dateObj = new Date(year, month, i + 1);
-    return {
-      date: i + 1,
-      day: dateObj.toLocaleDateString("en-US", { weekday: "long" }),
-    };
-  });
+  if (!todayMenu) {
+    return (
+      <Container>
+        <Title>No menu available for today</Title>
+      </Container>
+    );
+  }
 
   return (
     <Container>
-      <Title>VIT-AP Hostel Mess Menu – October 2025</Title>
+      <Title>
+        🍽️ Today’s Mess Menu – {todayKey} ({todayMenu.day})
+      </Title>
 
-      {/* ---------- DESKTOP TABLE ---------- */}
-      <TableWrapper>
-        <Table>
-          <thead>
-            <tr>
-              <Th>Date</Th>
-              <Th>Day</Th>
-              <Th>Breakfast</Th>
-              <Th>Lunch</Th>
-              <Th>Snacks</Th>
-              <Th>Dinner</Th>
-            </tr>
-          </thead>
-          <tbody>
-            {dates.map(({ date, day }) => (
-              <Tr key={date}>
-                <Td>{date}</Td>
-                <Td>{day}</Td>
-                <Td>{weeklyMenu[day]?.breakfast}</Td>
-                <Td>{weeklyMenu[day]?.lunch}</Td>
-                <Td>{weeklyMenu[day]?.snacks}</Td>
-                <Td>{weeklyMenu[day]?.dinner}</Td>
-              </Tr>
-            ))}
-          </tbody>
-        </Table>
-      </TableWrapper>
+      <CardsGrid>
+        <MealCard>
+          <MealTitle>🍳 Breakfast</MealTitle>
+          <p>{todayMenu.breakfast}</p>
+        </MealCard>
 
-      {/* ---------- MOBILE VIEW ---------- */}
-      <MobileContainer>
-        {dates.map(({ date, day }, index) => (
-          <Card key={date}>
-            <CardHeader
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            >
-              <span>
-                {day} - {date}
-              </span>
-              <span>{openIndex === index ? "−" : "+"}</span>
-            </CardHeader>
+        <MealCard>
+          <MealTitle>🍛 Lunch</MealTitle>
+          <p>{todayMenu.lunch}</p>
+        </MealCard>
 
-            {openIndex === index && (
-              <CardBody>
-                <p>
-                  <Label>Breakfast:</Label> {weeklyMenu[day]?.breakfast}
-                </p>
-                <p>
-                  <Label>Lunch:</Label> {weeklyMenu[day]?.lunch}
-                </p>
-                <p>
-                  <Label>Snacks:</Label> {weeklyMenu[day]?.snacks}
-                </p>
-                <p>
-                  <Label>Dinner:</Label> {weeklyMenu[day]?.dinner}
-                </p>
-              </CardBody>
-            )}
-          </Card>
-        ))}
-      </MobileContainer>
+        <MealCard>
+          <MealTitle>☕ Snacks</MealTitle>
+          <p>{todayMenu.snacks}</p>
+        </MealCard>
+
+        <MealCard>
+          <MealTitle>🍽️ Dinner</MealTitle>
+          <p>{todayMenu.dinner}</p>
+        </MealCard>
+      </CardsGrid>
     </Container>
   );
 };
