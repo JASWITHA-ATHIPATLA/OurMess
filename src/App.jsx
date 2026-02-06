@@ -15,6 +15,7 @@ import Location from "./components/Location.jsx";
 import Discussions from "./components/Discussions.jsx";
 import ThemeContext from "./components/Navbar.jsx";
 import AINutritionAnalyst from "./components/AINutritionAnalyst.jsx";
+import ThemeState from "./components/ThemeState.jsx";
 
 const MainCotainer = styled.div`
   min-height: 100vh;
@@ -56,7 +57,8 @@ function App() {
   const DarkTheme = useContext(ThemeContext);
   return (
     <>
-      <Routes>
+      <ThemeState>
+        <Routes>
         <Route path="Login" element={<Login />} />
         <Route
           path="/"
@@ -78,6 +80,7 @@ function App() {
           <Route path="AINutritionAnalyst" element={<AINutritionAnalyst />} />
         </Route>
       </Routes>
+      </ThemeState>
     </>
   );
 }
