@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { februaryMenu} from "./MenuData.jsx";
+import { februaryMenu } from "./MenuData.jsx";
 
-/* ---------------- GEMINI API KEY ---------------- */
-const GEMINI_URL ="https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
- // 🔴 PUT YOUR API KEY HERE
+/* ---------------- GEMINI API ---------------- */
+const GEMINI_API_KEY = "PUT_YOUR_KEY_HERE";
+const GEMINI_URL =
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 /* ---------------- STYLED COMPONENTS ---------------- */
+
 const Page = styled.div`
   min-height: 100vh;
   background: #f4f6f8;
@@ -34,7 +36,7 @@ const Meal = styled.div`
 
 const MealTitle = styled.h4`
   margin: 0;
-  color: #f6c34eff;
+  color: #f6c34e;
 `;
 
 const MealText = styled.p`
@@ -49,14 +51,14 @@ const Button = styled.button`
   padding: 12px;
   border-radius: 12px;
   border: none;
-  background: #f8ae25ff;
+  background: #f8ae25;
   color: white;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
 
   &:hover {
-    background: #ebac0fff;
+    background: #ebac0f;
   }
 `;
 
@@ -72,19 +74,18 @@ const AiResult = styled.div`
 /* ---------------- COMPONENT ---------------- */
 
 function AINutritionAnalyst() {
-  const days = Object.keys(weeklyMenu);
+  // ✅ build today's key based on date
+  const todayDate = new Date().getDate();
+  const todayKey = `Feb ${todayDate}`;
 
-  // JS getDay(): 0 = Sunday
-  const todayIndex = new Date().getDay();
-  const today =
-    todayIndex === 0 ? "Sunday" : days[todayIndex - 1];
-
-  const todayMenu = weeklyMenu[today];
+  const todayMenu = februaryMenu[todayKey];
 
   const [aiText, setAiText] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const analyzeTodayMenu = async () => {
+  const analyzeFebruaryMenu = async () => {
+    if (!todayMenu) return;
+
     setLoading(true);
     setAiText("Analyzing today's menu...");
 
@@ -94,25 +95,28 @@ function AINutritionAnalyst() {
           {
             parts: [
               {
-                text: `Analyze today's VIT-AP mess menu.
+                text: `You are a nutrition expert.
 
 Breakfast: ${todayMenu.breakfast}
 Lunch: ${todayMenu.lunch}
 Snacks: ${todayMenu.snacks}
 Dinner: ${todayMenu.dinner}
 
-Give a short health summary, protein level, and one improvement tip.`
+Tell:
+1) Overall health
+2) Protein level
+3) Calories level
+4) One improvement tip.
+
+Keep answer short.`
               }
             ]
           }
-        ],
-        systemInstruction: {
-          parts: [{ text: "Keep the response under 100 words." }]
-        }
+        ]
       };
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`,
+        `${GEMINI_URL}?key=${GEMINI_API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -121,6 +125,7 @@ Give a short health summary, protein level, and one improvement tip.`
       );
 
       const data = await response.json();
+
       setAiText(
         data?.candidates?.[0]?.content?.parts?.[0]?.text ||
           "No response received."
@@ -132,10 +137,14 @@ Give a short health summary, protein level, and one improvement tip.`
     setLoading(false);
   };
 
+  if (!todayMenu) return <p>No menu found for today.</p>;
+
   return (
     <Page>
       <Card>
-        <Title>Today's Mess Menu ({today})</Title>
+        <Title>
+          Today's Mess Menu ({todayKey} - {todayMenu.day})
+        </Title>
 
         <Meal>
           <MealTitle>Breakfast</MealTitle>
@@ -157,7 +166,7 @@ Give a short health summary, protein level, and one improvement tip.`
           <MealText>{todayMenu.dinner}</MealText>
         </Meal>
 
-        <Button onClick={analyzeTodayMenu}>
+        <Button onClick={analyzeFebruaryMenu}>
           {loading ? "Analyzing..." : "Analyze Today's Meal"}
         </Button>
 
@@ -165,6 +174,6 @@ Give a short health summary, protein level, and one improvement tip.`
       </Card>
     </Page>
   );
-};
+}
 
 export default AINutritionAnalyst;
