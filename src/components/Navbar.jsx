@@ -91,7 +91,7 @@ const Navbar = ({ sideBarVisibility, setsideBarVisibility }) => {
           return window.open("https://discord.gg/TzhSUyfbyW", "_blank");
         }}
       >
-        <FaDiscord size={34} color="rgba(8, 32, 216, 1)">
+        <FaDiscord size={44} color="rgba(8, 32, 216, 1)">
           Join
         </FaDiscord>
       </DiscordJoin>
