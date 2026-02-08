@@ -14,6 +14,7 @@ const ChatWrapper = styled.div`
 
   @media (max-width: 480px) {
     height: 350px;
+    width: 80%;
     margin: 10px;
   }
 `;
@@ -49,6 +50,10 @@ const Input = styled.input`
   border: none;
   border-radius: 0 0 0 10px;
   font-size: 14px;
+  @media (max-width: 480px) {
+    width: 30%;
+    height: auto;
+  }
 `;
 
 const SendButton = styled.button`
@@ -62,11 +67,18 @@ const SendButton = styled.button`
   &:hover {
     background: #1f3b5c;
   }
+  @media (max-width: 480px) {
+    width: 20%;
+    height: auto;
+    fon-size:10px;
+    padding:4px;
+    margin:4px;
+  }
 `;
 
 /* ---------- COMPONENT ---------- */
 
-function Discussions(){
+function Discussions() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
@@ -76,7 +88,7 @@ function Discussions(){
     const newMessage = {
       text: input,
       isUser: true,
-      timestamp: new Date().toLocaleTimeString()
+      timestamp: new Date().toLocaleTimeString(),
     };
 
     setMessages([...messages, newMessage]);
@@ -92,7 +104,10 @@ function Discussions(){
       <MessagesContainer>
         {messages.map((msg, idx) => (
           <Message key={idx} isUser={msg.isUser}>
-            {msg.text} <span style={{ fontSize: "10px", marginLeft: "6px" }}>{msg.timestamp}</span>
+            {msg.text}{" "}
+            <span style={{ fontSize: "10px", marginLeft: "6px" }}>
+              {msg.timestamp}
+            </span>
           </Message>
         ))}
       </MessagesContainer>
@@ -109,7 +124,6 @@ function Discussions(){
       </InputContainer>
     </ChatWrapper>
   );
-};
-
+}
 
 export default Discussions;
