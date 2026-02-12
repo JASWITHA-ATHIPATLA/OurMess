@@ -73,7 +73,7 @@ const Navbar = ({ sideBarVisibility, setsideBarVisibility }) => {
       <NavText to="/Login">Login</NavText>
 
 
-        <button
+        {/* <button
           style={{
             background: "orange",
             borderRadius: "10px",
@@ -83,7 +83,8 @@ const Navbar = ({ sideBarVisibility, setsideBarVisibility }) => {
           onClick={toogleTheme}
         >
           {darkTheme ? <Sun size={19} /> : <Moon size={19} />}
-        </button>
+        </button> */}
+        
       </Themecontext.Provider>
 
       <DiscordJoin
